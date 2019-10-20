@@ -1,3 +1,10 @@
 class CreateHotel < ActiveRecord::Migration 
-#this is the database for the hotel
+#This is the database for the hotel
+    def change 
+        create_table :hotel do |t|
+            t.string :name 
+            t.string :email
+            t.string :location 
+        end 
+    end 
 end 
