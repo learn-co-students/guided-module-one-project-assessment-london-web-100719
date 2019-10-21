@@ -43,7 +43,6 @@ class CommandLineInterface
         reviews.each do |review|
             puts ""
             puts "Username: #{review.user.name}"
-            puts ""
             puts "Review Content: #{review.content}"
             puts ""
         end
