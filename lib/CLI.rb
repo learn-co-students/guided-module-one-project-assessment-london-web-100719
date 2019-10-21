@@ -7,10 +7,11 @@ class CommandLineInterface
         greet 
         puts "here are some options for you, type the number corresponding to the option to call it."
         puts "If you wish to exit, type 'exit'"
-        puts "Find a hotel's reviews (1)"
-        puts "Find a user's reviews (2)"
-        puts "Display all hotels (3)"
-        puts "Display all users (4)"
+        puts "(1) Find a hotel's reviews"
+        puts "(2) Find a user's reviews"
+        puts "(3) Display information of a user"
+        puts "(4) Display information of a hotel"
+        puts "(5) Create a new user"
         puts "What do you wish to do?"
         choice = gets.chomp
         if choice == "1"
@@ -19,6 +20,12 @@ class CommandLineInterface
         elsif choice == "2"
             empty_lines
             read_user_all_review
+        elsif choice == "3"
+            empty_lines
+            display_user_info
+        elsif choice == "5"
+            empty_lines
+            create_user
         elsif choice == "exit"
             puts "k bye"
         else 
@@ -56,6 +63,31 @@ class CommandLineInterface
         show_reviews(reviews) #shows the reviews that have been found.
         empty_lines
         start 
+    end 
+
+    def display_user_info 
+        puts "In order to get the info of a user, enter their username: "
+        user_name = gets.chomp
+        user = User.find_by(name: user_name)
+        info = user.id
+        empty_lines
+        start
+    end 
+
+    def create_user 
+        puts "Enter new user name"
+        user_name = gets.chomp 
+        puts ""
+        puts "Enter your age"
+        age = gets.chomp 
+        puts ""
+        puts "Enter your email"
+        email = gets.chomp 
+        new_user = User.create(name: user_name, age: age, email: email)
+        puts "Successfully added a new user !"
+        empty_lines
+        start
+
     end 
 
     def empty_lines 
