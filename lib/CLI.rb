@@ -13,10 +13,10 @@ class CommandLineInterface
         puts "Display all users (4)"
         puts "What do you wish to do?"
         choice = gets.chomp
-        if choice == 1
+        if choice == "1"
             read_a_review
         elsif choice == "exit"
-            puts "jk you cant exit"
+            puts "k bye"
         end 
 
     end 
@@ -30,6 +30,7 @@ class CommandLineInterface
         #puts hotel.name
         reviews = Review.all.select { |review| review.hotel_id == hotel.id } #find if a review exists in review for a given hotel
         show_reviews(reviews)
+        start
     end 
 
     def show_reviews(reviews)
