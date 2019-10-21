@@ -33,7 +33,7 @@ class CommandLineInterface
         puts "You are now looking at reviews for #{hotel_name} hotel"
         hotel = Hotel.find_by(name: hotel_name) #This only search a hotel but doesn't do anything with it yet
         #puts hotel.name
-        reviews = Review.all.select { |review| review.hotel_id == hotel.id } #find if a review exists in review for a given hotel
+        reviews = hotel.reviews #find if a review exists in review for a given hotel
         show_reviews(reviews)
         empty_lines
         start
@@ -53,7 +53,7 @@ class CommandLineInterface
         puts "Write their full name here:"
         user_name = gets.chomp 
         user = User.find_by(name: user_name)
-        reviews = Review.all.select {|review| review.user_id == user.id}
+        reviews = user.reviews
         show_reviews(reviews)
         empty_lines
         start 
