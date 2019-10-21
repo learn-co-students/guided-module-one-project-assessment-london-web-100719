@@ -1,5 +1,5 @@
 10.times do 
-    User.create(name: Faker::Name.name)
+    User.create(name: Faker::Name.name, age: Faker::Number.number(digits: 2))
 end 
 
 10.times do 
@@ -7,5 +7,5 @@ end
 end 
 
 10.times do 
-    Review.create(user_id: User.all.sample.id, hotel_id: Hotel.all.sample.id, content: Faker::Hacker.say_something_smart)
+    Review.create(users_id: User.all.sample.id, hotels_id: Hotel.all.sample.id, content: Faker::Hacker.say_something_smart)
 end 
