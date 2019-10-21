@@ -7,5 +7,5 @@ end
 end 
 
 10.times do 
-    Review.create(users_id: User.all.sample.id, hotels_id: Hotel.all.sample.id, title: Faker::Hacker.say_something_smart, content: Faker::Hacker.say_something_smart)
+    Review.create(user_id: User.all.sample.id, hotel_id: Hotel.all.sample.id, title: Faker::Hacker.say_something_smart, content: Faker::Hacker.say_something_smart)
 end 
