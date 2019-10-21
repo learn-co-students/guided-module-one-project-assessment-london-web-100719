@@ -4,6 +4,7 @@ class CreateHotels < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :email
       t.string :location
+      t.integer :phone_number
     end
   end
 end

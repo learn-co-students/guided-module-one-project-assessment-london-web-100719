@@ -16,12 +16,13 @@ ActiveRecord::Schema.define(version: 2019_10_21_094335) do
     t.string "name"
     t.string "email"
     t.string "location"
+    t.integer "phone_number"
   end
 
   create_table "reviews", force: :cascade do |t|
     t.integer "users_id"
     t.integer "hotels_id"
-    t.string "name"
+    t.string "title"
     t.string "content"
   end
 
