@@ -32,9 +32,8 @@ class CommandLineInterface
         hotel_name = gets.chomp
         puts "You are now looking at reviews for #{hotel_name} hotel"
         hotel = Hotel.find_by(name: hotel_name) #This only search a hotel but doesn't do anything with it yet
-        #puts hotel.name
-        reviews = hotel.reviews #find if a review exists in review for a given hotel
-        show_reviews(reviews)
+        reviews = hotel.reviews #find if a review exists in review for a given hotel, this is the Active Record Shortcut 
+        show_reviews(reviews) #shows the reviews that have been found.
         empty_lines
         start
     end 
@@ -53,8 +52,8 @@ class CommandLineInterface
         puts "Write their full name here:"
         user_name = gets.chomp 
         user = User.find_by(name: user_name)
-        reviews = user.reviews
-        show_reviews(reviews)
+        reviews = user.reviews #find if a review exists in review for a given user, this is the Active Record Shortcut 
+        show_reviews(reviews) #shows the reviews that have been found.
         empty_lines
         start 
     end 
