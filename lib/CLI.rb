@@ -14,14 +14,19 @@ class CommandLineInterface
         puts "What do you wish to do?"
         choice = gets.chomp
         if choice == "1"
-            read_a_review
+            empty_lines
+            read_hotel_all_review
+        elsif choice == "2"
+            empty_lines
+            read_user_all_review
         elsif choice == "exit"
             puts "k bye"
+        else 
+            puts "You didn't want to comply and neither did I, now I am leaving."
         end 
-
     end 
 
-    def read_a_review 
+    def read_hotel_all_review 
         puts "Thinking of staying somewhere but not sure if it's good? We can help you with that decision!"
         puts "Enter a hotel name to get started:"
         hotel_name = gets.chomp
@@ -30,14 +35,38 @@ class CommandLineInterface
         #puts hotel.name
         reviews = Review.all.select { |review| review.hotel_id == hotel.id } #find if a review exists in review for a given hotel
         show_reviews(reviews)
+        empty_lines
         start
     end 
 
     def show_reviews(reviews)
         reviews.each do |review|
+            puts ""
             puts "Username: #{review.user.name}"
+            puts ""
             puts "Review Content: #{review.content}"
+            puts ""
         end
     end
-        
+
+    def read_user_all_review
+        puts "Curious about the review's someone wrote?"
+        puts "Write their full name here:"
+        user_name = gets.chomp 
+        user = User.find_by(name: user_name)
+        reviews = Review.all.select {|review| review.user_id == user.id}
+        show_reviews(reviews)
+        empty_lines
+        start 
+    end 
+
+    def empty_lines 
+        puts ""
+        puts ""
+        puts ""
+        puts ""
+        puts ""
+    end 
+
+    
 end 
