@@ -1,3 +1,4 @@
+
 class CommandLineInterface
     def greet
         puts 'Welcome to Tetravago, the best resource for hotel information in the world!'
@@ -11,7 +12,8 @@ class CommandLineInterface
         puts "(2) Find a user's reviews"
         puts "(3) Display information of a user"
         puts "(4) Display information of a hotel"
-        puts "(5) Create a new user"
+        puts "(5) Add a new user"
+        puts "(6) Add a new hotel"
         puts "What do you wish to do?"
         choice = gets.chomp
         if choice == "1"
@@ -29,6 +31,9 @@ class CommandLineInterface
         elsif choice == "5"
             empty_lines
             create_user
+        elsif choice == "6"
+            empty_lines
+            create_hotel
         elsif choice == "exit"
             puts "k bye"
         else 
@@ -78,7 +83,7 @@ class CommandLineInterface
     end 
 
     def display_hotel_info 
-        puts "In order to get the info of a hotel, enter the hotel name: ".red
+        puts "In order to get the info of a hotel, enter the hotel name: "
         hotel_name = gets.chomp
         hotel = Hotel.find_by(name: hotel_name)
         puts "Name: #{hotel.name} Email: #{hotel.email} Location #{hotel.location} Phone Number #{hotel.phone_number}"
@@ -99,9 +104,26 @@ class CommandLineInterface
         puts "Successfully added a new user !"
         empty_lines
         start
-
     end 
 
+    def create_hotel 
+        puts "Enter new hotel name"
+        hotel_name = gets.chomp 
+        puts ""
+        puts "Enter the hotel email"
+        email = gets.chomp 
+        puts ""
+        puts "Enter the hotel's address"
+        location = gets.chomp 
+        puts ""
+        puts "Enter your phone number"
+        phone_number = gets.chomp
+        new_hotel = Hotel.create(name: hotel_name, email: email, location: location, phone_number: phone_number)
+        puts "Successfully added a new hotel !"
+        empty_lines
+        start
+    end 
+    
     def empty_lines 
         puts ""
         puts ""
