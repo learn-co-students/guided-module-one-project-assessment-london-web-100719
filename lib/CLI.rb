@@ -111,18 +111,18 @@ class CommandLineInterface
     end 
 
     def create_hotel 
-        puts "Enter new hotel name"
+        puts "Enter new hotel's name"
         hotel_name = gets.chomp 
         puts ""
-        puts "Enter the hotel email"
+        puts "Enter the hotel's email"
         email = gets.chomp 
         puts ""
         puts "Enter the hotel's address"
         location = gets.chomp 
         puts ""
-        puts "Enter your phone number"
+        puts "Enter the hotel's phone number"
         phone_number = gets.chomp
-        new_hotel = Hotel.create(name: hotel_name, email: email, location: location, phone_number: phone_number)
+        new_hotel = Hotel.create_hotel(hotel_name, email, location, phone_number)
         puts "Successfully added a new hotel !"
         empty_lines
         start
