@@ -23,6 +23,9 @@ class CommandLineInterface
         elsif choice == "3"
             empty_lines
             display_user_info
+        elsif choice == "4"
+            empty_lines
+            display_hotel_info
         elsif choice == "5"
             empty_lines
             create_user
@@ -69,7 +72,16 @@ class CommandLineInterface
         puts "In order to get the info of a user, enter their username: "
         user_name = gets.chomp
         user = User.find_by(name: user_name)
-        info = user.id
+        puts "Name: #{user.name} Age: #{user.age} Email: #{user.email}"
+        empty_lines
+        start
+    end 
+
+    def display_hotel_info 
+        puts "In order to get the info of a hotel, enter the hotel name: ".red
+        hotel_name = gets.chomp
+        hotel = Hotel.find_by(name: hotel_name)
+        puts "Name: #{hotel.name} Email: #{hotel.email} Location #{hotel.location} Phone Number #{hotel.phone_number}"
         empty_lines
         start
     end 
