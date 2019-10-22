@@ -104,7 +104,7 @@ class CommandLineInterface
         puts ""
         puts "Enter your email"
         email = gets.chomp 
-        new_user = User.create(name: user_name, age: age, email: email)
+        new_user = User.create_user(user_name, age, email)
         puts "Successfully added a new user !"
         empty_lines
         start

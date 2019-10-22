@@ -6,4 +6,8 @@ class User < ActiveRecord::Base
     def self.find_by_name(name)
         User.find_by(name: name)
     end 
+
+    def self.create_user(user_name, age, email)
+        User.create(name: user_name, age: age, email: email)
+    end 
 end 
