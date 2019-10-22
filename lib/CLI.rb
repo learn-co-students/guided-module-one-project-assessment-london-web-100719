@@ -50,7 +50,7 @@ class CommandLineInterface
         puts "Enter a hotel name to get started:"
         hotel_name = gets.chomp
         puts "You are now looking at reviews for #{hotel_name} hotel"
-        hotel = Hotel.find_by(name: hotel_name) #This only search a hotel but doesn't do anything with it yet
+        hotel = Hotel.find_by_name(hotel_name) #This only search a hotel but doesn't do anything with it yet
         reviews = hotel.reviews #find if a review exists in review for a given hotel, this is the Active Record Shortcut 
         show_reviews(reviews) #shows the reviews that have been found.
         empty_lines
@@ -70,7 +70,7 @@ class CommandLineInterface
         puts "Curious about the review's someone wrote?"
         puts "Write their full name here:"
         user_name = gets.chomp 
-        user = User.find_by(name: user_name)
+        user = User.find_by_name(user_name)
         reviews = user.reviews #find if a review exists in review for a given user, this is the Active Record Shortcut 
         show_reviews(reviews) #shows the reviews that have been found.
         empty_lines
@@ -80,7 +80,7 @@ class CommandLineInterface
     def display_user_info 
         puts "In order to get the info of a user, enter their username: "
         user_name = gets.chomp
-        user = User.find_by(name: user_name)
+        user = User.find_by_name(user_name)
         puts "Name: #{user.name} Age: #{user.age} Email: #{user.email}"
         empty_lines
         start
@@ -89,7 +89,7 @@ class CommandLineInterface
     def display_hotel_info 
         puts "In order to get the info of a hotel, enter the hotel name: "
         hotel_name = gets.chomp
-        hotel = Hotel.find_by(name: hotel_name)
+        hotel = Hotel.find_by_name(hotel_name)
         puts "Name: #{hotel.name} Email: #{hotel.email} Location #{hotel.location} Phone Number #{hotel.phone_number}"
         empty_lines
         start
